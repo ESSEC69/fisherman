@@ -1,6 +1,31 @@
 <h4 class="text-center"> Reserver <%=@spot.title%> </h4>
 <div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <%= simple_form_for([@spot, @booking]) do |f| %>
+      <%= f.error_notification %>
 
-  <%= render 'form_booking', booking: @booking %>
+      <%= f.input :checkin, as: :string, input_html: { class: "datepicker" }, error: "La date d'arrivée esr nécessaire" %>
+      <%= f.input :number_of_day, collection: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], label: "Nombre de Jours" %>
+      <!-- set le price a nombre_of_days * @spot.price_per_day -->
+      <%= f.input :number_of_people, collection: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], label: "Nombre de Personnes" %>
+      <!-- mettre le nombre of days en hidden en le setant a la soustraction de checkout - checkin -->
+
+      <%= f.submit  'Réserver' %>
+    <% end %>
+     </div>
+
+  </div>
 
 </div>
+<% content_for :after_js do %>
+  <% javascript_tag do %>
+    $(function() {
+        $('input.datepicker').data({behaviour: "datepicker"}).datepicker({
+        language: "fr",
+        todayHighlight: true,
+        startDate: "today",
+      });
+    });
+  <% end %>
+<% end %>
