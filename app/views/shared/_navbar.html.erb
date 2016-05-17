@@ -42,6 +42,11 @@
               <% end %>
             </li>
             <li>
+              <%= link_to bookings_path() do %>
+                <i class="fa fa-book"></i> <%= t ".tableaudebord", default: "Tableau de Bord" %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
               <% end %>

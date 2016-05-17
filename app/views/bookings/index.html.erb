@@ -1,0 +1,98 @@
+<% if @bookings %>
+
+  <div class="container">
+  <div class="row">
+    <h4>Mes réservations</h4>
+  </div>
+    <div class="row">
+      <div class="col-md-2">
+      <p> Le Spot </p>
+      </div>
+      <div class="col-md-2">
+      <p> Le prix </p>
+      </div>
+      <div class="col-md-2">
+      <p> Date </p>
+      </div>
+      <div class="col-md-2">
+      <p>Status</p>
+      </div>
+      <div class="col-md-2">
+      <p>Action</p>
+      </div>
+    </div>
+  <% @bookings.each do |booking| %>
+    <div class="row">
+    <div class="col-md-2">
+    <p><%= booking.spot.title %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.price %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.checkin %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.status %></p>
+    </div>
+    </div>
+  <%end%>
+  </div>
+<%end%>
+
+<% if @locations %>
+<div class="container">
+  <div class="row">
+    <h4>Mes locataires</h4>
+  </div>
+  <div class="row">
+      <div class="col-md-2">
+      <p> Le Spot </p>
+      </div>
+      <div class="col-md-2">
+      <p> Le Pêcheur </p>
+      </div>
+      <div class="col-md-2">
+      <p> Date </p>
+      </div>
+      <div class="col-md-2">
+      <p>Status</p>
+      </div>
+      <div class="col-md-2">
+      <p>Action</p>
+      </div>
+    </div>
+  <% @locations.each do |location| %>
+  <div class="row">
+    <div class="col-md-2">
+      <p><%= location.spot.title %></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= location.user.first_name + " " + location.user.last_name %> </p>
+    </div>
+    <div class="col-md-2">
+      <p><%= location.checkin%></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= location.status%></p>
+    </div>
+    <div class="col-md-2">
+      <% if location.status = "En attente de confirmation" %>
+      <%= simple_form_for(location]) do |f| %>
+        <%= f.error_notification %>
+        <%= f.status :status, default: 'Confirmée' %>
+        <%= f.submit  'Accepter' %>
+      <% end %>
+
+      <%end%>
+      <% if location.status = "Confirmée" %>
+
+      <%end%>
+      <% if location.status = "Refusée" %>
+
+      <%end%>
+    </div>
+  </div>
+  <%end%>
+</div>
+<%end%>
