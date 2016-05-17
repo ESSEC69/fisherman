@@ -8,6 +8,8 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'cloudinary'
+gem 'carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -20,6 +22,15 @@ gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 
 gem "geocoder"
+
+
+gem 'bootstrap-datepicker-rails'
+
+# Photo upload
+gem 'cloudinary'
+gem 'carrierwave'
+
+
 
 group :development, :test do
   gem 'binding_of_caller'

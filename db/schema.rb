@@ -13,12 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20160517164739) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.string   "checkin"
-    t.string   "checkout"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "spot_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160517164739) do
     t.datetime "token_expiry"
     t.string   "phone_number"
     t.string   "description"
+    t.string   "photo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,4 +1,6 @@
 class Spot < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
+
   validates :title, presence: true
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
