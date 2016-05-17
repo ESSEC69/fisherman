@@ -1,0 +1,43 @@
+<% if @bookings %>
+  <h4>Mes réservations</h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+      <p> Le Spot </p>
+      </div>
+      <div class="col-md-2">
+      <p> Le prix </p>
+      </div>
+      <div class="col-md-2">
+      <p> Date </p>
+      </div>
+      <div class="col-md-2">
+      <p>Status</p>
+      </div>
+      <div class="col-md-2">
+      <p>Action</p>
+      </div>
+    </div>
+  <% @bookings.each do |booking| %>
+    <div class="row">
+    <div class="col-md-2">
+    <p><%= booking.spot.title %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.price %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.checkin %></p>
+    </div>
+    <div class="col-md-2">
+    <p><%= booking.status %></p>
+    </div>
+    </div>
+  <%end%>
+  </div>
+<%end%>
+
+<% @locations.each do |location| %>
+    <p>location.title</p>
+    <p>location.user.name</p>
+<%end%>

@@ -2,6 +2,14 @@ class BookingsController < ApplicationController
 
   before_action :find_spot, only: [:new, :create]
 
+
+  def index
+
+    @bookings = Booking.where("user_id = #{current_user.id}")
+    @locations = Booking.joins(:spot).where("user_id = #{current_user.id}" )
+
+    # find bookings spots_id where user_id du spots =
+  end
   def new
     @booking = Booking.new()
   end
@@ -11,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.spot = @spot
     @booking.price = @booking.number_of_day * @spot.price_per_day
     @booking.status = "En attente de confirmation"
-
+    @booking.user_id = current_user.id
 
     if @booking.save
       redirect_to spot_path(@spot.id)
