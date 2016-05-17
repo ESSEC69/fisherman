@@ -6,6 +6,7 @@
       <p>Nom: <%= @user.last_name%></p>
       <p>Téléphone:<%= @user.phone_number%></p>
       <p>Description:<%= @user.description%></p>
+      <p>Photo de profil: <%= cl_image_tag @user.photo, crop: :fit, width: 200 %></p>
       <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
