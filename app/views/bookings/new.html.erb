@@ -1,0 +1,21 @@
+<h4 class="text-center"> Reserver <%=@spot.title%> </h4>
+<div class="container">
+  <div class="card">
+    <%= simple_form_for([@spot, @booking]) do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :checkin, error: 'checkin date is mandatory, please specify one' %>
+      <%= f.input :checkout, error: 'checkout date is mandatory' %>
+
+      <%= f.input :number_of_people, collection: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  %>
+      <!-- mettre le nombre of days en hidden en le setant a la soustraction de checkout - checkin -->
+      <%= f.input :number_of_days, collection: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  %>
+      <!-- set le price a nombre_of_days * @spot.price_per_day -->
+      <%= f.input :price %>
+
+
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
