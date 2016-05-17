@@ -26,6 +26,6 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:title, :description, :price_per_day, :street_number, :street, :postal_code, :city)
+    params.require(:spot).permit(:title, :description, :price_per_day, :street_number, :street, :postal_code, :city, :photo, :photo_cache)
   end
 end
