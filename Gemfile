@@ -21,12 +21,15 @@ gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
 
+gem "geocoder"
+
 
 gem 'bootstrap-datepicker-rails'
 
 # Photo upload
 gem 'cloudinary'
 gem 'carrierwave'
+
 
 
 group :development, :test do
