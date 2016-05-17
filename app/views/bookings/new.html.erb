@@ -1,0 +1,15 @@
+<h4 class="text-center"> Reserver <%=@spot.title%> </h4>
+<div class="container">
+  <div class="card">
+    <%= simple_form_for([@spot, @booking]) do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :checkin, error: 'checkin date is mandatory, please specify one' %>
+      <%= f.input :checkout, error: 'checkout date is mandatory' %>
+      <%= f.input :rating, collection: [0, 1, 2, 3, 4]  %>
+
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
