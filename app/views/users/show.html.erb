@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center">Profile page</h1>
+      <p>Prénom: <%= @user.first_name%></p>
+      <p>Nom: <%= @user.last_name%></p>
+      <p>Téléphone:<%= @user.phone_number%></p>
+      <p>Description:<%= @user.description%></p>
+      <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
