@@ -19,9 +19,13 @@ gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
 
+
+gem 'bootstrap-datepicker-rails'
+
 # Photo upload
 gem 'cloudinary'
 gem 'carrierwave'
+
 
 group :development, :test do
   gem 'binding_of_caller'
