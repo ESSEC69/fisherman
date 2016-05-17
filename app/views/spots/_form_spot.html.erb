@@ -1,11 +1,44 @@
 <%= simple_form_for(spot) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price_per_day %>
-  <%= f.input :street_number %>
-  <%= f.input :street %>
-  <%= f.input :postal_code %>
-  <%= f.input :city %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :title, label: "Nom de votre étang", placeholder: "Etangs des Carmes" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :description, placeholder: "Décrivez-nous en quelques mots votre étang" %>
+    </div>
+  </div>
 
-  <%= f.submit class: "btn btn-success" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :price_per_day, label: "Price per day (€)", placeholder: "50" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+      <%= f.input :street_number, label: "N°" %>
+    </div>
+    <div class="col-xs-9">
+      <%= f.input :street %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-8">
+      <%= f.input :city %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.input :postal_code %>
+    </div>
+  </div>
+
+
+  <div id="btn-submit-post" class="text-center">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+
+
+
 <%end%>
