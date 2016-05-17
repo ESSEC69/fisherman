@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:checkin, :checkout, number_of_people:, number_of_days: )
+    params.require(:booking).permit(:checkin, :checkout, :number_of_people, :number_of_days )
   end
 
   def find_spot
