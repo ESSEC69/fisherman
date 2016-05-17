@@ -26,12 +26,6 @@ gem "geocoder"
 
 gem 'bootstrap-datepicker-rails'
 
-# Photo upload
-gem 'cloudinary'
-gem 'carrierwave'
-
-
-
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
