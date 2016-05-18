@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
 
   resources :spots do
-    resources :bookings, only: [ :new, :create]
+    resources :bookings, only: [ :new, :create] do
     resources :reviews, only: [:new, :create]
+    end
   end
 
   resources :bookings, only: [:index, :show, :edit, :update]
