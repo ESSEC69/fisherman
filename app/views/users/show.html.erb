@@ -14,5 +14,17 @@
       <p><%= cl_image_tag @user.photo, crop: :fit, width: 200 %></p>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <h1 class="text-center">Reviews</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <% @reviews.each do |review| %>
+      <p> <%= review.content %> </p>
+      <p></p>
+      <% end %>
+    </div>
+  </div>
 
 </div>
