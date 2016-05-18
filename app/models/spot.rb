@@ -12,7 +12,7 @@ class Spot < ActiveRecord::Base
   end
 
   def address_changed?
-    street_number_changed? || street_changed? || postal_code_change? || city_changed?
+    street_number_changed? || street_changed? || postal_code_changed? || city_changed?
   end
 
 end
