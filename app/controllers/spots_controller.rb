@@ -4,8 +4,8 @@ class SpotsController < ApplicationController
   end
   def show
     @spot = Spot.find(params[:id])
+    @reviews = Review.joins(:booking).where("bookings.spot_id = #{@spot.id} and reviews.ownership = false")
   end
-
   def new
     @spot = Spot.new
   end
