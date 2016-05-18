@@ -1,4 +1,6 @@
 class Spot < ActiveRecord::Base
+  has_many :reviews, through: :bookings
+
   mount_uploader :photo, PhotoUploader
 
   validates :title, presence: true
