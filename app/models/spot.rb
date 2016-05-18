@@ -1,11 +1,18 @@
 class Spot < ActiveRecord::Base
+  # photo uploads
   mount_uploader :photo, PhotoUploader
 
-  validates :title, presence: true
+  # mapping
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  # validation
+  validates :title, presence: true
+
+  # associations
   belongs_to :user
+
+  #private
 
   def address
     [street_number, street, postal_code, city].compact.join(" ")
