@@ -1,20 +1,72 @@
 <div class="container">
-  <h1 class="text-center">Profile page</h1>
+
   <div class="row">
-    <div class="col-xs-12 col-md-8">
-      <p>Prénom: <%= @user.first_name%></p>
-      <p>Nom: <%= @user.last_name%></p>
-      <p>Téléphone:<%= @user.phone_number%></p>
-      <p>Description:<%= @user.description%></p>
-      <% if @user == current_user %>
-        <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary" %>
-      <% end %>
+    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+        <% if @user == current_user %>
+        <%= link_to "Edit  ", edit_user_registration_path %>
+        <% end %>
+
+        <% if @user == current_user %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= t ".sign_out", default: "  Logout" %>
+        <% end %>
+        <% end %>
+      <br>
+      <p class=" text-info">Membre depuis: <%= @user.created_at.strftime("%d/%m/%Y")%></p>
     </div>
-    <div class="col-xs-12 col-md-4">
-      <p><%= cl_image_tag @user.photo, crop: :fit, width: 200 %></p>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.first_name%> <%=@user.last_name%></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <%= cl_image_tag @user.photo, crop: :fit, width: 100, class: "img-circle img-responsive"%> </div>
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Email</td>
+                    <td><%=@user.email%></td>
+                  </tr>
+                  <tr>
+                    <td>Téléphone</td>
+                    <td><%=@user.phone_number%></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td><%=@user.description%></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" class="btn btn-primary">My fishing spot</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+          <span class="pull-right">
+              <% if @user == current_user %>
+                <%= link_to edit_user_registration_path, type: "button", class: "btn btn-sm btn-primary" do%>
+                  <i class="glyphicon glyphicon-edit"></i>
+                <% end %>
+              <% end %>
+
+              <% if @user == current_user %>
+                <%= link_to registration_path(:user), type: "button", class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "Êtes-vous sûr ? ", :'confirm-button-text' => 'Oui', :'cancel-button-text' => 'Non', :'confirm-button-color' => '#4AE3B5', text: 'Fisherman: la réference locative des spots de pêche privés', :'image-url' => image_path('logo.png') } do%>
+                  <i class="glyphicon glyphicon-remove"></i>
+                <% end %>
+              <% end %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div class="container">
   <h1 class="text-center">Reviews</h1>
@@ -44,3 +96,4 @@
   </div>
   <%end%>
 </div>
+
