@@ -21,8 +21,8 @@ gem 'omniauth-facebook'
 
 # Maps
 gem "geocoder"
-
-
+gem "coffee-rails"
+gem "gmaps4rails"
 # Calendar
 gem 'bootstrap-datepicker-rails'
 
@@ -31,7 +31,7 @@ gem 'cloudinary'
 gem 'carrierwave'
 
 source 'https://rails-assets.org' do
-  gem "gmaps4rails"
+
   gem "rails-assets-underscore"
 end
 

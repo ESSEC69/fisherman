@@ -7,7 +7,13 @@ class SpotsController < ApplicationController
     nearby = params[:q]
     radius = params[:radius]
 
+    @spots = Spot.all
     @spots_results = Spot.near(nearby, radius)
+    @markers = Gmaps4rails.build_markers(@spots_results) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+      marker.infowindow render_to_string(:partial => "/spots/map_box", locals: {spot: spot})
+    end
   end
 
   def show
