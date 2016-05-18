@@ -246,11 +246,8 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.2.6)
-<<<<<<< HEAD
   rails-assets-underscore!
-=======
   rails-assets-sweetalert!
->>>>>>> master
   rails_12factor
   redis
   sass-rails
