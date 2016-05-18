@@ -77,13 +77,12 @@
       <p><%= location.status%></p>
     </div>
     <div class="col-md-2">
-      <% if location.status = "En attente de confirmation" %>
-      <%= simple_form_for(location]) do |f| %>
-        <%= f.error_notification %>
-        <%= f.status :status, default: 'Confirmée' %>
-        <%= f.submit  'Accepter' %>
-      <% end %>
-
+      <% if location.status == "En attente de confirmation" %>
+        <%= simple_form_for(location) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :status, :as => :hidden, :input_html => { :value => "Confirmée" } %>
+          <%= f.submit  'Accepter' %>
+        <% end %>
       <%end%>
       <% if location.status = "Confirmée" %>
 
