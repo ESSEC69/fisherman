@@ -56,7 +56,6 @@
 <%end%>
 </div>
 
-
 <div class="tab-content hidden" id="location">
 <% if @locations %>
 <div class="container">
@@ -114,7 +113,6 @@
         <%= f.input :status, :as => :hidden, :input_html => { :value => "Refusée" } %>
         <%= f.submit  'Refuser' %>
       <% end %>
-
 
       <%end%>
       <% if location.status = "Confirmée" %>

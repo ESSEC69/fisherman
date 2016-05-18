@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @bookings = Booking.where("user_id = #{current_user.id}")
     @locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id}")
 
+
     @pending_bookings = Booking.where("user_id = #{current_user.id} and status = 'En attente de confirmation'")
     @pending_locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id} and status = 'En attente de confirmation'")
 
@@ -37,6 +38,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+
 
     @booking.update(update_params)
     redirect_to bookings_path()
@@ -66,10 +68,6 @@ class BookingsController < ApplicationController
     hash[:number_of_people] = hash[:number_of_people].to_i
     hash[:number_of_day] = hash[:number_of_day].to_i
     return hash
-  end
-
-  def update_params
-    params.require(:booking).permit(:status)
   end
 
   def find_spot
