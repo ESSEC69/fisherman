@@ -19,9 +19,10 @@ gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
 
+# Maps
 gem "geocoder"
 
-
+# Calendar
 gem 'bootstrap-datepicker-rails'
 
 # Photo upload
