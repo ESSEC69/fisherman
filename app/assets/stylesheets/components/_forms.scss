@@ -1,6 +1,5 @@
 .form-spot {
   background-color: white;
-  padding: 15px 10px;
   margin:10px 0;
   border: 1px solid $gray-lighter;
   border-radius: 4px;
@@ -10,3 +9,12 @@
   }
 }
 
+
+#form-search {
+  background-color: white;
+  padding: 10px;
+  margin: 10px 0;
+  margin-right: 10px;
+  border: 1px solid $gray-lighter;
+  border-radius: 4px;
+}

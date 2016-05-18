@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show', as: :show_user
 
+  get 'spots/search', to: 'spots#search', as: :search_spot
 
   resources :spots do
     resources :bookings, only: [ :new, :create]

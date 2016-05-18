@@ -2,6 +2,20 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all
   end
+
+  def search
+    nearby = params[:q]
+    radius = params[:radius]
+
+    @spots = Spot.all
+    @spots_results = Spot.near(nearby, radius)
+    @markers = Gmaps4rails.build_markers(@spots_results) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+      marker.infowindow render_to_string(:partial => "/spots/map_box", locals: {spot: spot})
+    end
+  end
+
   def show
     @spot = Spot.find(params[:id])
     @reviews = Review.joins(:booking).where("bookings.spot_id = #{@spot.id} and reviews.ownership = false")
