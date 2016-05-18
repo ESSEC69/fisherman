@@ -4,13 +4,15 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:update]
 
 
+
   def index
 
     @bookings = Booking.where("user_id = #{current_user.id}")
-    @locations = Booking.joins(:spot).where('spots.user_id > 0')
+    @locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id}")
 
+    @pending_bookings = Booking.where("user_id = #{current_user.id} and status = 'En attente de confirmation'")
+    @pending_locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id} and status = 'En attente de confirmation'")
 
-    # find bookings spots_id where user_id du spots =
   end
   def new
     @booking = Booking.new()
@@ -35,6 +37,8 @@ class BookingsController < ApplicationController
   end
 
   def update
+      @booking.update(update_params)
+      redirect_to bookings_path()
 
   # si owner = current_user / bookings
   # si staus = encours
@@ -63,6 +67,10 @@ class BookingsController < ApplicationController
 
   def find_spot
     @spot = Spot.find(params[:spot_id])
+  end
+
+  def update_params
+    params.require(:booking).permit(:status)
   end
 
   def find_booking
