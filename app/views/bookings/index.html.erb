@@ -55,7 +55,9 @@
     <p><%= booking.status %></p>
     </div>
     <div class="col-md-2">
-    <p><%= link_to new_spot_review_path(@spot), "add a review" %></p>
+      <% if booking.status == 'Confirmée' %>
+      <p> <%= link_to new_spot_review_path(booking.spot_id, booking.id), "add a review" %> </p>
+      <% end %>
     </div>
     </div>
   <%end%>
