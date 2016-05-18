@@ -24,6 +24,11 @@ gem "geocoder"
 
 gem 'bootstrap-datepicker-rails'
 
+source "https://rails-assets.org" do
+  gem 'rails-assets-sweetalert'
+end
+gem 'sweet-alert-confirm'
+
 # Photo upload
 gem 'cloudinary'
 gem 'carrierwave'
