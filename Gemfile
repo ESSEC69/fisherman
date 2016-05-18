@@ -22,6 +22,7 @@ gem 'omniauth-facebook'
 # Maps
 gem "geocoder"
 
+
 # Calendar
 gem 'bootstrap-datepicker-rails'
 
@@ -29,7 +30,10 @@ gem 'bootstrap-datepicker-rails'
 gem 'cloudinary'
 gem 'carrierwave'
 
-
+source 'https://rails-assets.org' do
+  gem "gmaps4rails"
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'
