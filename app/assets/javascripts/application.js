@@ -4,5 +4,7 @@
 //= require bootstrap-datepicker
 //= require underscore
 //= require gmaps/google
+//= require sweetalert
+//= require sweet-alert-confirm
 //= require_tree .
 

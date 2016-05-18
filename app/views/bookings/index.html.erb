@@ -1,30 +1,50 @@
+<div class="tabs">
+  <a class="tab active" data-target="#reservation" href="#">
+    <h3><%= @pending_bookings.length %></h3>
+    <p>Mes Prochains Voyages</p>
+  </a>
+  <a class="tab" data-target="#location" href="#">
+    <h3><%= @pending_locations.length %></h3>
+    <p>Mes pêcheurs</p>
+  </a>
+</div>
+
+
+<div class="tab-wrapper">
+<div class="tab-content" id="reservation">
+
 <% if @bookings %>
 
   <div class="container">
   <div class="row">
-    <h4>Mes réservations</h4>
+    <h4 class="text-center">Mes réservations</h4>
   </div>
     <div class="row">
       <div class="col-md-2">
-      <p> Le Spot </p>
+      <p> <strong>Le Spot </strong></p>
       </div>
       <div class="col-md-2">
-      <p> Le prix </p>
+      <p> <strong>Prix </strong> </p>
       </div>
       <div class="col-md-2">
-      <p> Date </p>
+      <p> <strong>Date </strong></p>
       </div>
       <div class="col-md-2">
-      <p>Status</p>
+      <p><strong>Statut</strong></p>
       </div>
       <div class="col-md-2">
-      <p>Action</p>
+      <p><strong>Action</strong></p>
       </div>
+      <div class="col-md-2">
+      <p><strong>Review</strong></p>
+      </div>
+
     </div>
   <% @bookings.each do |booking| %>
     <div class="row">
     <div class="col-md-2">
-    <p><%= booking.spot.title %></p>
+    <p> <%= link_to booking.spot.title, spot_path(booking.spot_id) %> </p>
+
     </div>
     <div class="col-md-2">
     <p><%= booking.price %></p>
@@ -35,54 +55,87 @@
     <div class="col-md-2">
     <p><%= booking.status %></p>
     </div>
+    <div class="col-md-2">
+      <p><strong> ... </strong></p>
+      </div>
+    <div class="col-md-2">
+       <!-- you can review if your order has been confirmed and it has happened -->
+       <% if (booking.status == 'Confirmée' && booking.checkin.to_date < Date.new() ) %>
+       <p> <%= link_to "add a review", new_booking_review_path(booking) %> </p>
+       <%else%>
+       <p>N/A</p>
+       <% end %>
+
+    </div>
     </div>
   <%end%>
   </div>
 <%end%>
+</div>
 
+<div class="tab-content hidden" id="location">
 <% if @locations %>
 <div class="container">
   <div class="row">
-    <h4>Mes locataires</h4>
+    <h4 class="text-center">Mes locataires</h4>
   </div>
   <div class="row">
       <div class="col-md-2">
-      <p> Le Spot </p>
+      <p> <strong>Le Spot </strong></p>
       </div>
       <div class="col-md-2">
-      <p> Le Pêcheur </p>
+      <p><strong> Le Pêcheur</strong> </p>
       </div>
       <div class="col-md-2">
-      <p> Date </p>
+      <p> <strong>Date </strong></p>
       </div>
       <div class="col-md-2">
-      <p>Status</p>
+      <p><strong>Prix</strong></p>
       </div>
-      <div class="col-md-2">
-      <p>Action</p>
+      <div class="col-md-1">
+      <p><strong>Statut</strong></p>
+      </div>
+      <div class="col-md-1">
+      <p><strong>Action</strong></p>
+      </div>
+      <div class="col-md-1">
+      <p><strong>Review</strong></p>
+
       </div>
     </div>
   <% @locations.each do |location| %>
   <div class="row">
     <div class="col-md-2">
-      <p><%= location.spot.title %></p>
+      <p> <%= link_to location.spot.title, spot_path(location.spot_id) %> </p>
     </div>
     <div class="col-md-2">
-      <p><%= location.user.first_name + " " + location.user.last_name %> </p>
+      <p> <%= link_to "#{location.user.first_name}  #{location.user.last_name}", show_user_path(location.user_id) %> </p>
+
     </div>
     <div class="col-md-2">
       <p><%= location.checkin%></p>
     </div>
     <div class="col-md-2">
+      <p><%= location.price%></p>
+    </div>
+    <div class="col-md-1">
       <p><%= location.status%></p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <% if location.status == "En attente de confirmation" %>
-        <%= simple_form_for(location) do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "Confirmée" } %>
-          <%= f.submit  'Accepter' %>
-        <% end %>
+
+      <%= simple_form_for(location) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "Confirmée" } %>
+        <%= f.submit  'Accepter' %>
+      <% end %>
+
+      <%= simple_form_for(location) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "Refusée" } %>
+        <%= f.submit  'Refuser' %>
+      <% end %>
+
       <%end%>
       <% if location.status = "Confirmée" %>
 
@@ -91,7 +144,40 @@
 
       <%end%>
     </div>
+    <div class="col-md-1">
+
+       <!-- you can review if your order has been confirmed and it has happened -->
+       <% if (location.status == 'Confirmée' && location.checkin.to_date < Date.new() ) %>
+       <p> <%= link_to "add a review", new_booking_review_path(location) %> </p>
+       <%else%>
+       <p>N/A</p>
+       <% end %>
+    </div>
   </div>
   <%end%>
 </div>
 <%end%>
+</div>
+</div>
+
+
+
+<% content_for :after_js do %>
+  <% javascript_tag do %>
+    $(function(){
+
+      $(".tab").on("click", function(e){
+        // Change active tab
+        $(".tab").toggleClass( "active", false)
+        $(this).toggleClass("active", true)
+        // Hide all tab-content (use class="hidden")
+        $(".tab-content").toggleClass( "hidden", true)
+        // Show target tab-content (use class="hidden")
+        var adress = $(".active").data("target");
+        $(adress).toggleClass( "hidden", false);
+      });
+
+    });
+  <% end %>
+<% end %>
+
