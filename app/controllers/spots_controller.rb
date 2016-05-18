@@ -2,6 +2,14 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all
   end
+
+  def search
+    nearby = params[:q]
+    radius = params[:radius]
+
+    @spots_results = Spot.near(nearby, radius)
+  end
+
   def show
     @spot = Spot.find(params[:id])
   end
