@@ -17,14 +17,11 @@
 @import "vendor/index";
 
 // Import des styles propres aux pages
-@import "spots"
+@import "spots";
 
 
 
-#map {
-  width: 100%;
-  height: 50vh;
-}
+
 
 .yield {
   min-height: 100%;
