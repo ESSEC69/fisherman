@@ -37,8 +37,11 @@ class BookingsController < ApplicationController
   end
 
   def update
-      @booking.update(update_params)
-      redirect_to bookings_path()
+
+    @booking.update(update_params)
+    redirect_to bookings_path()
+
+
 
   # si owner = current_user / bookings
   # si staus = encours
@@ -63,6 +66,10 @@ class BookingsController < ApplicationController
     hash[:number_of_people] = hash[:number_of_people].to_i
     hash[:number_of_day] = hash[:number_of_day].to_i
     return hash
+  end
+
+  def update_params
+    params.require(:booking).permit(:status)
   end
 
   def find_spot
