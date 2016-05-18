@@ -1,12 +1,14 @@
 class BookingsController < ApplicationController
 
   before_action :find_spot, only: [:new, :create]
+  before_action :find_booking, only: [:update]
 
 
   def index
 
     @bookings = Booking.where("user_id = #{current_user.id}")
-    @locations = Booking.joins(:spot).where("user_id = #{current_user.id}" )
+    @locations = Booking.joins(:spot).where('spots.user_id > 0')
+
 
     # find bookings spots_id where user_id du spots =
   end
@@ -47,6 +49,10 @@ class BookingsController < ApplicationController
 
 
   private
+
+  def find_booking
+     @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     hash = params.require(:booking).permit(:checkin, :number_of_people, :number_of_day)
