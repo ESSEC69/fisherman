@@ -13,13 +13,13 @@
   <a class="card-link" href="#" ></a>
   <div class="card-front-description">
     <div class="card-title">
-      <h2>Au lac des terres Rouges</h2>
+      <h2><%= spot.title.capitalize%></h2>
     </div>
   </div>
   <div class="user text-center">
-    <%= image_tag("fishing-girl", class: "avatar-bordered")%>
+    <%= cl_image_tag(spot.user.photo, class: "avatar-bordered")%>
   </div>
-  <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
+  <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path spot.photo%>);">
   </div>
 
   <!-- <div class="back">
