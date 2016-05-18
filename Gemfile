@@ -19,9 +19,11 @@ gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
 
+# Maps
 gem "geocoder"
-
-
+gem "coffee-rails"
+gem "gmaps4rails"
+# Calendar
 gem 'bootstrap-datepicker-rails'
 
 source "https://rails-assets.org" do
@@ -33,7 +35,10 @@ gem 'sweet-alert-confirm'
 gem 'cloudinary'
 gem 'carrierwave'
 
+source 'https://rails-assets.org' do
 
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'
