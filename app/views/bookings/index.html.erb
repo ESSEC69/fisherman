@@ -95,11 +95,12 @@
       <div class="col-md-1">
       <p><strong>Statut</strong></p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
       <p><strong>Action</strong></p>
       </div>
       <div class="col-md-1">
-      <p><strong>Revue</strong></p>
+      <p><strong>Review</strong></p>
+
       </div>
     </div>
   <% @locations.each do |location| %>
@@ -120,7 +121,7 @@
     <div class="col-md-1">
       <p><%= location.status%></p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <% if location.status == "En attente de confirmation" %>
 
       <%= simple_form_for(location) do |f| %>
@@ -144,6 +145,7 @@
       <%end%>
     </div>
     <div class="col-md-1">
+
        <!-- you can review if your order has been confirmed and it has happened -->
        <% if (location.status == 'Confirmée' && location.checkin.to_date < Date.new() ) %>
        <p> <%= link_to "add a review", new_booking_review_path(location) %> </p>
