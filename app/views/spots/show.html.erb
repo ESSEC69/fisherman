@@ -4,6 +4,36 @@
 
 <%= cl_image_tag @spot.photo, height: 300, width: 400, crop: :fill%>
 
+
+<div class="container">
+  <h4>Commentaires</h4>
+  <div class="row">
+    <div class="col-md-2">
+      <p> <strong>Pêcheur</strong>  </p>
+    </div>
+    <div class="col-md-2">
+      <p> <strong>Date</strong>  </p>
+    </div>
+    <div class="col-md-4">
+      <p> <strong>Commentaire</strong>  </p>
+    </div>
+  </div>
+  <% @reviews.each do |review| %>
+  <div class="row">
+    <div class="col-md-2">
+      <p> <%= review.booking.user.first_name %> </p>
+    </div>
+    <div class="col-md-2">
+      <p> <%= review.created_at %> </p>
+    </div>
+    <div class="col-md-4">
+      <p> <%= review.content %> </p>
+    </div>
+
+  </div>
+  <%end%>
+</div>
+
     <div id="map"></div>
 
     <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
