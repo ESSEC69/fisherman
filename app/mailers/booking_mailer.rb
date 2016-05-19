@@ -7,4 +7,13 @@ class BookingMailer < ApplicationMailer
      subject:  "Booking : #{booking.spot.title} - Etat : #{@booking.status}"
    )
  end
+
+ def booking_demand(booking)
+  @booking = booking
+
+   mail(
+     to:       @booking.spot.user.email,
+     subject:  "New Booking : #{booking.spot.title} - Etat : #{@booking.status}"
+   )
+ end
 end
