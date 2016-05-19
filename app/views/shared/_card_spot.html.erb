@@ -1,38 +1,48 @@
-<!-- <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "fishing-girl" %>');">
-  <div class="card-category">Card Category</div>
-  <div class="card-description">
-    <h2>Au lac des terres Rouges</h2>
-    <p>Super etang avec bcp de poissons</p>
-  </div>
-  <img class="card-user avatar" src="<%= image_path "fishing-girl-avatar.jpg" %>">
-  <a class="card-link" href="#" ></a>
-</div>
- -->
 
-<div class="card">
-  <a class="card-link" href="#" ></a>
-  <div class="card-front-description">
-    <div class="card-title">
-      <h2>Au lac des terres Rouges</h2>
-    </div>
-  </div>
-  <div class="user text-center">
-    <%= image_tag("fishing-girl", class: "avatar-bordered")%>
-  </div>
-  <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
-  </div>
+<div class="flip">
+  <div class="card">
 
-  <!-- <div class="back">
-    <div class="card-style">
+    <div class="face front">
+      <div class="well well-sm inner">
+        <a class="card-link" href="#" ></a>
+        <div class="card-front-description">
+          <div class="card-title">
+            <h2>Au lac des terres Rouges</h2>
+          </div>
+        </div>
+        <div class="user text-center">
+          <%= image_tag("fishing-girl", class: "avatar-bordered")%>
+        </div>
+        <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
+      </div>
+    </div>
+    </div>
 
+    <div class="face back">
+       <div class="well well-sm inner">
+         <a class="card-link" href="#" ></a>
+         <div class="card-front-description">
+           <div class="card-title">
+             <p>description du lac</p>
+           </div>
+         </div>
+         <div class="mini-cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
+         </div>
+          <ul class="list-inline">
+            <li>
+              <%= link_to show_user_path(current_user) do %>
+              <i class="fa fa-user"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bookings_path() do %>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <% end %>
+            </li>
+          </ul>
+         </div>
     </div>
-    <div class="card-owner">
-      <%= image_tag("fishing-girl", class: "avatar-bordered")%>
-    </div>
-    <div class="card-back-description">
-      <p>Super étang avec beaucoup de poissons</p>
-    </div>
-  </div> -->
+  </div>
 </div>
 
 

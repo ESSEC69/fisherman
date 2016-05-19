@@ -1,14 +1,17 @@
 <%= render "shared/banner_home" %>
 
-
+<div class="flip-card-container">
 <div class="container padded">
   <%= link_to "Go to all spots", spots_path, class: "btn btn-success" %>
-  <div class="row">
+    <div class="row">
       <div class="col-xs-12 col-sm-4">
         <%= render "shared/card_spot" %>
       </div>
       <div class="col-xs-12 col-sm-4">
         <%= render "shared/card_spot" %>
       </div>
-  </div>
+    </div>
 </div>
+</div>
+
+
