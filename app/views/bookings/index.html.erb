@@ -24,6 +24,9 @@
       <p> <strong>Le Spot </strong></p>
       </div>
       <div class="col-md-2">
+      <p> <strong>Propriétaire </strong></p>
+      </div>
+      <div class="col-md-2">
       <p> <strong>Prix </strong> </p>
       </div>
       <div class="col-md-2">
@@ -32,9 +35,7 @@
       <div class="col-md-2">
       <p><strong>Statut</strong></p>
       </div>
-      <div class="col-md-2">
-      <p><strong>Action</strong></p>
-      </div>
+
       <div class="col-md-2">
       <p><strong>Review</strong></p>
       </div>
@@ -44,7 +45,9 @@
     <div class="row">
     <div class="col-md-2">
     <p> <%= link_to booking.spot.title, spot_path(booking.spot_id) %> </p>
-
+    </div>
+    <div class="col-md-2">
+      <p> <%= link_to booking.spot.user.first_name, show_user_path(booking.spot.user_id) %> </p>
     </div>
     <div class="col-md-2">
     <p><%= booking.price %></p>
@@ -55,16 +58,24 @@
     <div class="col-md-2">
     <p><%= booking.status %></p>
     </div>
-    <div class="col-md-2">
-      <p><strong> ... </strong></p>
-      </div>
+
     <div class="col-md-2">
        <!-- you can review if your order has been confirmed and it has happened -->
-       <% if (booking.status == 'Confirmée' && booking.checkin.to_date < Date.new() ) %>
-       <p> <%= link_to "add a review", new_booking_review_path(booking) %> </p>
+      <% if !Review.where("booking_id = #{booking.id} and ownership = 'false'").empty? %>
+        <p>Already Done</p>
+      <%else%>
+       <% if (booking.status == 'Confirmée' && booking.checkin.to_date < DateTime.now ) %>
+        <%= link_to new_booking_review_path(booking) do %>
+          <span class="label label-primary">Commentaire</span>
+        <% end %>
+       <% elsif booking.status == 'Confirmée'%>
+         <p> Bientôt :-) </p>
        <%else%>
        <p>N/A</p>
        <% end %>
+      <%end%>
+
+
 
     </div>
     </div>
@@ -83,21 +94,19 @@
       <div class="col-md-2">
       <p> <strong>Le Spot </strong></p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
       <p><strong> Le Pêcheur</strong> </p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
       <p> <strong>Date </strong></p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
       <p><strong>Prix</strong></p>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-4">
       <p><strong>Statut</strong></p>
       </div>
-      <div class="col-md-1">
-      <p><strong>Action</strong></p>
-      </div>
+
       <div class="col-md-1">
       <p><strong>Review</strong></p>
 
@@ -108,52 +117,62 @@
     <div class="col-md-2">
       <p> <%= link_to location.spot.title, spot_path(location.spot_id) %> </p>
     </div>
-    <div class="col-md-2">
-      <p> <%= link_to "#{location.user.first_name}  #{location.user.last_name}", show_user_path(location.user_id) %> </p>
+    <div class="col-md-1">
+      <p> <%= link_to "#{location.user.first_name}", show_user_path(location.user_id) %> </p>
 
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <p><%= location.checkin%></p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <p><%= location.price%></p>
     </div>
-    <div class="col-md-1">
-      <p><%= location.status%></p>
-    </div>
-    <div class="col-md-1">
+    <div class="col-md-4">
+
       <% if location.status == "En attente de confirmation" %>
 
-      <%= simple_form_for(location) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :status, :as => :hidden, :input_html => { :value => "Confirmée" } %>
-        <%= f.submit  'Accepter' %>
-      <% end %>
+        <ul class = "list-inline">
+          <li> <%= location.status%> :
+          </li>
+          <li>
+          <%= simple_form_for(location) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :status, :as => :hidden, :input_html => { :value => "Confirmée" } %>
+            <%= f.submit  'OUI', :class => "btn btn-success" %>
+          <% end %>
+          </li>
 
-      <%= simple_form_for(location) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :status, :as => :hidden, :input_html => { :value => "Refusée" } %>
-        <%= f.submit  'Refuser' %>
-      <% end %>
-
+          <li>
+          <%= simple_form_for(location) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :status, :as => :hidden, :input_html => { :value => "Refusée" } %>
+            <%= f.submit  'NON', :class => "btn btn-warning" %>
+          <% end %>
+          </li>
+        </ul>
+      <%else%>
+        <p><%= location.status%></p>
       <%end%>
-      <% if location.status = "Confirmée" %>
 
-      <%end%>
-      <% if location.status = "Refusée" %>
-
-      <%end%>
     </div>
-    <div class="col-md-1">
 
-       <!-- you can review if your order has been confirmed and it has happened -->
-       <% if (location.status == 'Confirmée' && location.checkin.to_date < Date.new() ) %>
-       <p> <%= link_to "add a review", new_booking_review_path(location) %> </p>
-       <%else%>
-       <p>N/A</p>
-       <% end %>
+    <div class="col-md-1">
+    <!-- you can review if your order has been confirmed and it has happened -->
+    <!--  We also had that we can only review once -->
+    <% if !Review.where("booking_id = #{location.id} and ownership = 'true'").empty? %>
+      <p>Already Done</p>
+    <%else%>
+      <% if (location.status == 'Confirmée' && location.checkin.to_date < DateTime.now ) %>
+        <%= link_to new_booking_review_path(location) do %>
+          <span class="label label-primary">Commentaire</span>
+        <% end %>
+      <%else%>
+        <p>N/A</p>
+      <% end %>
+    <%end%>
     </div>
   </div>
+
   <%end%>
 </div>
 <%end%>

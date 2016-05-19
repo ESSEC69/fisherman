@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
     @pending_bookings = Booking.where("user_id = #{current_user.id} and status = 'En attente de confirmation'")
     @pending_locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id} and status = 'En attente de confirmation'")
 
+
+
   end
   def new
     @booking = Booking.new()
@@ -27,6 +29,7 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
 
     if @booking.save
+      BookingMailer.booking_demand(@booking).deliver_now
       redirect_to spot_path(@spot.id)
     else
       render :new
@@ -39,11 +42,9 @@ class BookingsController < ApplicationController
 
   def update
 
-
     @booking.update(update_params)
+    BookingMailer.booking_confirmation(@booking).deliver_now
     redirect_to bookings_path()
-
-
 
   # si owner = current_user / bookings
   # si staus = encours

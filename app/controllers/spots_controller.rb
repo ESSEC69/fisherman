@@ -44,6 +44,8 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
+      # appelle le SpotMailer pour envoyer le mail de confirmation de création
+      SpotMailer.creation_confirmation(@spot).deliver_now
       redirect_to spot_path(@spot)
     else
       render :new
@@ -59,4 +61,6 @@ class SpotsController < ApplicationController
   def spot_params
     params.require(:spot).permit(:title, :description, :price_per_day, :street_number, :street, :postal_code, :city, :photo, :photo_cache)
   end
+
+
 end
