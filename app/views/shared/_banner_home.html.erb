@@ -6,10 +6,10 @@
       <%= form_tag("/spots/search", method: "get", class: "form-inline") do %>
         <div class="form-group">
 
-          <%= text_field_tag(:q, params[:q], placeholder: "Where ?") %>
+          <%= text_field_tag(:q, params[:q], placeholder: "Where ?", class: "form-control") %>
         </div>
         <div class="form-group">
-          <%= number_field_tag(:radius, params[:radius], placeholder: "Distance")%>
+          <%= number_field_tag(:radius, params[:radius], placeholder: "Distance", class: "form-control")%>
         </div>
         <%= submit_tag "Find a spot", class:"btn btn-success"%>
       <% end %>

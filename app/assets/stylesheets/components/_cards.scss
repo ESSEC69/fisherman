@@ -82,16 +82,19 @@
 
 //-------------------------- Cards de search -------------------------//
 .card-search-spot {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
   transition: all .3s ease;
   border-left: 2px solid $blue-dark;
+  margin-bottom: 5px;
   .card-search-body {
     flex: 1 0 auto;
   }
   .card-search-picture {
     margin: 0 3px;
+    margin-right: 10px;
     img {
       border-radius: 3px;
     }
@@ -124,5 +127,4 @@
 }
 .card-search-spot:hover {
   border-left: 4px solid $blue;
-
 }

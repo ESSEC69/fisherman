@@ -1,10 +1,14 @@
 <div class="card-search-spot">
   <%= link_to "", spot_path(spot), class: "card-search-link"%>
-    <div class="card-search-picture">
-      <%= cl_image_tag spot.photo, height: 70, width: 100, crop: :fill %>
-    </div>
-    <div class="card-search-body">
-      <h1><%= spot.title.capitalize%></h1>
-      <p><%= spot.description.capitalize %></p>
-    </div>
+  <div class="card-search-picture">
+    <%= cl_image_tag spot.photo, height: 70, width: 100, crop: :fill %>
+  </div>
+  <div class="card-search-body">
+    <h1><%= spot.title.capitalize%></h1>
+    <p>
+      <%= spot.description.capitalize %><br/>
+      <%= spot.price_per_day %> €
+    </p>
+
+  </div>
 </div>

@@ -21,6 +21,7 @@
     font-size : 22px;
     margin-top : 0px;
   }
+
 }
 
 
@@ -29,4 +30,14 @@
   color: black;
 }
 
+
+#advanced-search  {
+  p {
+    margin-top: 10px;
+    text-decoration: underline $blue-dark;
+  }
+  .c-inputs-stacked {
+    margin-left: 8px;
+  }
+}
 
