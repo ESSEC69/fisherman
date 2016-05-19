@@ -39,11 +39,9 @@ class BookingsController < ApplicationController
 
   def update
 
-
     @booking.update(update_params)
+    BookingMailer.booking_confirmation(@booking).deliver_now
     redirect_to bookings_path()
-
-
 
   # si owner = current_user / bookings
   # si staus = encours
