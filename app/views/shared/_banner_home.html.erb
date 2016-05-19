@@ -1,18 +1,17 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("background.jpg")%>);">
-  <div class="banner-content">
-    <h1>Fishing becomes so easy</h1>
-    <p>The very best fishing spots around you</p>
-    <div id="form-home">
-      <%= form_tag("/spots/search", method: "get", class: "form-inline") do %>
-        <div class="form-group">
-
-          <%= text_field_tag(:q, params[:q], placeholder: "Where ?", class: "form-control") %>
+<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="http://res.cloudinary.com/steencloud/video/upload/v1463671426/Fish-Tank_g978mh.mp4" type="video/mp4" />
+            <source src="http://res.cloudinary.com/steencloud/video/upload/v1463672311/Fish-Tank_tg5o5x.webm" type="video/webm" />
+        </video>
+        <div class="banner">
+            <h1>Fishing becomes so easy</h1>
+            <p>The very best fishing spots around you</p>
+            <%= link_to "FIND A SPOT", search_spot_path, class: "btn btn-success btn-lg" %>
         </div>
-        <div class="form-group">
-          <%= number_field_tag(:radius, params[:radius], placeholder: "Distance", class: "form-control", min:"0")%>
+        <div class="poster hidden">
+            <img src="http://res.cloudinary.com/steencloud/image/upload/v1463671436/Fish-Tank_q9krvs.jpg" alt="">
         </div>
-        <%= submit_tag "Find a spot", class:"btn btn-success"%>
-      <% end %>
     </div>
-  </div>
 </div>
