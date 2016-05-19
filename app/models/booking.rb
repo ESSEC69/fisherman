@@ -4,4 +4,6 @@ class Booking < ActiveRecord::Base
   validates :checkin, presence: :true
   validates :number_of_day, presence: :true
   validates :number_of_people, presence: :true
+
+  has_many :reviews
 end

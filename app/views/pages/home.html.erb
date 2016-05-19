@@ -1,14 +1,16 @@
 <%= render "shared/banner_home" %>
 
 
-<div class="container padded text-center">
-  <%= link_to "Create a new spot", new_spot_path, class: "btn btn-success" %>
-  <div class="row">
-    <% @spots.each do |spot|%>
-      <div class="col-xs-12 col-sm-4">
-        <%= render "shared/card_spot", spot: spot %>
+
+<div class="flip-card-container">
+  <div class="container padded text-center">
+    <%= link_to "Create a new spot", new_spot_path, class: "btn btn-success" %>
+    <div class="row">
+      <% @spots.each do |spot|%>
+        <div class="col-xs-12 col-sm-4">
+          <%= render "shared/card_spot", spot: spot %>
+        </div>
+      <%end%>
       </div>
-    <%end%>
   </div>
 </div>
-

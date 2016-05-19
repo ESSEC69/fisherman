@@ -90,3 +90,8 @@ function scaleBannerVideoSize(element){
 
     });
 }
+
+$('.flip').hover(function(){
+        $(this).find('.card').toggleClass('flipped');
+
+    });

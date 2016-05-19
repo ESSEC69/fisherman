@@ -4,11 +4,27 @@ class SpotsController < ApplicationController
   end
 
   def search
-    nearby = params[:q]
-    radius = params[:radius]
+    # récupération des parametres dans l'url
+    params[:q] == "" ? nearby = "France" : nearby = params[:q]
+    params[:radius] == "" ? radius = "500" : radius = params[:radius]
+    price = params[:price]
 
-    @spots = Spot.all
+    # slect on maps
     @spots_results = Spot.near(nearby, radius)
+    unless price == "all"
+      # slectionner les bons prix
+      case price
+      when "min"
+        @spots_results= @spots_results.select { |spot| spot.price_per_day < 25}
+      when "medmin"
+        @spots_results= @spots_results.select { |spot| (spot.price_per_day >= 25) && (spot.price_per_day < 50)}
+      when "medmax"
+        @spots_results= @spots_results.select { |spot| (spot.price_per_day >= 50) && (spot.price_per_day < 100)}
+      when "max"
+        @spots_results= @spots_results.select { |spot| spot.price_per_day > 100}
+      end
+    end
+
     @markers = Gmaps4rails.build_markers(@spots_results) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude

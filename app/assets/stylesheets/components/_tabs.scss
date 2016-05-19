@@ -1,8 +1,10 @@
 .tabs {
-  background: #4AE3B5;
+  background: $gray-lighter;
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
+  border-radius: 10px 10px 0 0;
 }
+
 .tabs a {
   color: white;
 }
@@ -21,7 +23,8 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
+  background: $blue-dark;
+  opacity:0.5;
   flex: 0 0 50%;
   text-align: center;
   padding: 20px 0;
@@ -35,21 +38,25 @@
 .tab.active {
   background: white;
   color: black;
+  opacity: 1;
 }
 
 .tab-wrapper {
-  background-color: #4AE3B5;
+  background-color: $gray-lighter;
 
-  padding :10px;
-
-
+  // border-radius: 4px 4px 0 0;
+  // padding :0 20px 20px 20px;
 }
 
 .tab-content {
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 0px 10px;
   background-color: white;
   min-height : 500px;
-  box-shadow: 2px 2px 2px grey;
-  border-radius: 4px;
+  // box-shadow: 2px 2px 2px grey;
+  // border-radius: 4px;
+  border: 1px solid $gray-lighter;
+}
 
+.bordered {
+  border-left: 1px solid $gray-lighter;
 }

@@ -23,9 +23,9 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo.present? %>
-            <%= image_tag current_user.photo , class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag current_user.photo ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
-            <%= image_tag current_user.picture , class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag current_user.picture ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -33,11 +33,11 @@
                 <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
               <% end %>
             </li>
-            <li>
+            <!-- <li>
               <%= link_to "#" do %>
                 <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
               <% end %>
-            </li>
+            </li> -->
             <li>
               <%= link_to bookings_path() do %>
                 <i class="fa fa-book"></i> <%= t ".tableaudebord", default: "Tableau de Bord" %>
@@ -61,7 +61,7 @@
     <% end %>
 
     <%if user_signed_in? %>
-    <%= link_to t(".top_call_to_action", default: "Decouvrir"), spots_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Create a new spot"), new_spot_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
     </div>
     <%else%>
     <%= link_to "Inscription", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small btn-success' %>

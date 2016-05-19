@@ -3,6 +3,18 @@
 <div class="container">
   <h1><%= @spot.title.capitalize %></h1>
   <p><%= @spot.description%></p>
+  <% if @spot.reviews == [] %>
+    <p><em>Ce spot de pêche n'a pas encre été noté<em></p>
+  <%else%>
+    <p>
+    <% @spot.rating.times do %>
+      <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
+    <%end%>
+    <% (5 - @spot.rating).times do %>
+    <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
+    <%end%>
+    </p>
+  <%end%>
 
   <div id="map"></div>
 </div>
@@ -10,8 +22,10 @@
 
 
 <div class="container">
-  <h4>Commentaires</h4>
+<div class="commentaire-wrapper">
+  <h4 class="text-center ">Commentaires</h4>
   <div class="row">
+  <div class="commentaire">
     <div class="col-md-2">
       <p> <strong>Pêcheur</strong>  </p>
     </div>
@@ -23,7 +37,11 @@
     </div>
   </div>
   <% @reviews.each do |review| %>
+  <div class="commentaire">
   <div class="row">
+    <div class="col-md-1">
+      <p> <%= review.booking.user.picture %> </p>
+    </div>
     <div class="col-md-2">
       <p> <%= review.booking.user.first_name %> </p>
     </div>
@@ -33,9 +51,12 @@
     <div class="col-md-4">
       <p> <%= review.content %> </p>
     </div>
+  </div>
+  </div>
 
   </div>
   <%end%>
+</div>
 </div>
 
 <div class="container">
@@ -66,6 +87,7 @@
         handler.fitMapToBounds();
         handler.getMap().setZoom(16);
         // Permet de dezoomer pour etre lisible
+        handler.getMap().setOptions({'scrollwheel': false});
       });
     })
   </script>
