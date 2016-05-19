@@ -3,6 +3,18 @@
 <div class="container">
   <h1><%= @spot.title.capitalize %></h1>
   <p><%= @spot.description%></p>
+  <% if @spot.reviews == [] %>
+    <p><em>Ce spot de pêche n'a pas encre été noté<em></p>
+  <%else%>
+    <p>
+    <% @spot.rating.times do %>
+      <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
+    <%end%>
+    <% (5 - @spot.rating).times do %>
+    <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
+    <%end%>
+    </p>
+  <%end%>
 
   <div id="map"></div>
 </div>
@@ -75,6 +87,7 @@
         handler.fitMapToBounds();
         handler.getMap().setZoom(16);
         // Permet de dezoomer pour etre lisible
+        handler.getMap().setOptions({'scrollwheel': false});
       });
     })
   </script>

@@ -1,7 +1,7 @@
 <div class="card-search-spot">
   <%= link_to "", spot_path(spot), class: "card-search-link"%>
   <div class="card-search-picture">
-    <%= cl_image_tag spot.photo, height: 70, width: 100, crop: :fill %>
+    <%= cl_image_tag spot.photo, height: 100, width: 130, crop: :fill %>
   </div>
   <div class="card-search-body">
     <h1><%= spot.title.capitalize%></h1>
@@ -9,6 +9,15 @@
       <%= spot.description.capitalize %><br/>
       <%= spot.price_per_day %> €
     </p>
-
+    <% if spot.reviews != [] %>
+      <p>
+      <% spot.rating.times do %>
+        <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
+      <%end%>
+      <% (5 - spot.rating).times do %>
+      <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
+      <%end%>
+      </p>
+    <%end%>
   </div>
 </div>

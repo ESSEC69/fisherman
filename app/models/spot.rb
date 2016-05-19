@@ -11,9 +11,14 @@ class Spot < ActiveRecord::Base
 
   # associations
   belongs_to :user
+  has_many :bookings
   has_many :reviews, through: :bookings
-
   #private
+  #
+
+  def rating
+    self.reviews.average(:rating).to_i
+  end
 
   def address
     [street_number, street, postal_code, city].compact.join(" ")
