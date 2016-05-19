@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
 
     if @booking.save
+      BookingMailer.booking_demand(@booking).deliver_now
       redirect_to spot_path(@spot.id)
     else
       render :new
