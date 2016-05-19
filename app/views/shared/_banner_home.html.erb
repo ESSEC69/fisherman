@@ -2,6 +2,17 @@
   <div class="banner-content">
     <h1>Fishing becomes so easy</h1>
     <p>The very best fishing spots around you</p>
-    <%= link_to "FIND A SPOT", search_spot_path, class: "btn btn-success btn-lg" %>
+    <div id="form-home">
+      <%= form_tag("/spots/search", method: "get", class: "form-inline") do %>
+        <div class="form-group">
+
+          <%= text_field_tag(:q, params[:q], placeholder: "Where ?") %>
+        </div>
+        <div class="form-group">
+          <%= number_field_tag(:radius, params[:radius], placeholder: "Distance")%>
+        </div>
+        <%= submit_tag "Find a spot", class:"btn btn-success"%>
+      <% end %>
+    </div>
   </div>
 </div>

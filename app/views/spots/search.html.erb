@@ -1,56 +1,60 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-3">
-      <div id="form-search">
-        <%= form_tag("#", method: "get") do %>
-          <%= label_tag(:q, "Search around:") %><br/>
-          <%= text_field_tag(:q, params[:q]) %>
-          <%= label_tag(:radius, "radius:") %><br/>
-          <%= number_field_tag(:radius, params[:radius])%><br/>
-          <%= submit_tag "Search", class:"btn btn-success"%>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-9">
-      <div id="search-results">
-        <div class="row">
-          <% @spots_results.each do |spot|%>
-            <div class="col-xs-12 col-sm-6">
-              <%=spot.title%>
-              <%=spot.description%> <br/>
-              <%= link_to "show", spot_path(spot) %>
+    <div class="col-xs-12 col-sm-5">
 
-            </div>
-           <%end%>
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="form-search">
+            <h2>Your search :</h2>
+            <%= form_tag("#", method: "get", class:"form-inline") do %>
+              <%= text_field_tag(:q, params[:q]) %>
+              <%= number_field_tag(:radius, params[:radius])%>
+              <button class="btn btn-success">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="search-results">
+            <% @spots_results.each do |spot|%>
+              <%= render "spots/card_search_spot", spot: spot %>
+            <%end%>
+          </div>
         </div>
       </div>
     </div>
 
-
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-7">
       <div id="map-results">
 
       </div>
     </div>
+
+
   </div>
 </div>
 
 
-
+<!-- Map javascript -->
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     $(document).on('ready', function() {
       handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map-results' } }, function(){
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
+        if ( markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+        handler.getMap().setOptions({'scrollwheel': false});
       });
     })
-  <% end %>
+  </script>
 <% end %>
 

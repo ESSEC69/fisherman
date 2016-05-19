@@ -4,8 +4,8 @@ class SpotsController < ApplicationController
   end
 
   def search
-    nearby = params[:q]
-    radius = params[:radius]
+    params[:q] == "" ? nearby = "France" : nearby = params[:q]
+    params[:radius] == "" ? radius = "500" : radius = params[:radius]
 
     @spots = Spot.all
     @spots_results = Spot.near(nearby, radius)
