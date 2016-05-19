@@ -10,8 +10,8 @@
             <%= form_tag("#", method: "get", class:"form-inline") do %>
               <p>Your destination: <p>
               <div class="form-group">
-                <%= text_field_tag(:q, params[:q], placeholder: "ex: Paris", class: "form-control") %>
-                <%= number_field_tag(:radius, params[:radius], placeholder: "ex: 5", class: "form-control" )%>
+                <%= text_field_tag(:q, params[:q], placeholder: "ex: Paris", class: "form-control", required:"required") %>
+                <%= number_field_tag(:radius, params[:radius], placeholder: "ex: 5", class: "form-control", min:"0" )%>
               </div>
 
 
