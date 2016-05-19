@@ -8,3 +8,7 @@
 //= require sweet-alert-confirm
 //= require_tree .
 
+$('.flip').hover(function(){
+        $(this).find('.card').toggleClass('flipped');
+
+    });

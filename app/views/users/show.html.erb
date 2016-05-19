@@ -22,7 +22,7 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center"> <%= cl_image_tag @user.photo, crop: :fit, width: 100, class: "img-circle img-responsive"%> </div>
+            <div class="col-md-3 col-lg-3 " align="center"> <%= cl_image_tag @user.photo, :width=>100, :height=>100, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round"%> </div>
             <div class=" col-md-9 col-lg-9 ">
               <table class="table table-user-information">
                 <tbody>
@@ -70,33 +70,48 @@
 
 <div class="container">
   <h1 class="text-center">Reviews</h1>
+  <div class="commentaire-wrapper">
+
   <div class="row">
-    <div class="col-md-2">
-      <p> <strong>Par</strong>  </p>
+    <div class="col-md-1">
+      <p> <strong></strong>  </p>
     </div>
     <div class="col-md-2">
-      <p> <strong>Date</strong>  </p>
+      <p> <strong>Pécheur</strong>  </p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <p> <strong>Commentaire</strong>  </p>
     </div>
     <div class="col-md-2">
       <p> <strong>Note</strong>  </p>
     </div>
+    <div class="col-md-2">
+      <p> <strong>Date</strong>  </p>
+    </div>
   </div>
   <% @reviews.each do |review| %>
+  <div class="commentaire">
   <div class="row">
-    <div class="col-md-2">
-      <p> <%= review.booking.spot.user.first_name %> </p>
-    </div>
-    <div class="col-md-2">
-      <p> <%= review.created_at %> </p>
-    </div>
-    <div class="col-md-6">
-      <p> <%= review.content %> </p>
-    </div>
 
+      <div class="col-md-1">
+        <%= cl_image_tag @user.photo, crop: :fit, width: 100, height: 100, class: "img-responsive"%>
+      </div>
+      <div class="col-md-2">
+        <p> <%= review.booking.spot.user.first_name %> </p>
+      </div>
+
+      <div class="col-md-5">
+        <p> <%= review.content %> </p>
+      </div>
+      <div class="col-md-2">
+      <p> <strong>...</strong>  </p>
+      </div>
+      <div class="col-md-2">
+        <p> <%= review.created_at.to_s[0..9] %> </p>
+      </div>
+    </div>
   </div>
   <%end%>
+  </div>
 </div>
 

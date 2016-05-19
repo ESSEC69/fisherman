@@ -22,8 +22,10 @@
 
 
 <div class="container">
-  <h4>Commentaires</h4>
+<div class="commentaire-wrapper">
+  <h4 class="text-center ">Commentaires</h4>
   <div class="row">
+  <div class="commentaire">
     <div class="col-md-2">
       <p> <strong>Pêcheur</strong>  </p>
     </div>
@@ -35,7 +37,11 @@
     </div>
   </div>
   <% @reviews.each do |review| %>
+  <div class="commentaire">
   <div class="row">
+    <div class="col-md-1">
+      <p> <%= review.booking.user.picture %> </p>
+    </div>
     <div class="col-md-2">
       <p> <%= review.booking.user.first_name %> </p>
     </div>
@@ -45,9 +51,12 @@
     <div class="col-md-4">
       <p> <%= review.content %> </p>
     </div>
+  </div>
+  </div>
 
   </div>
   <%end%>
+</div>
 </div>
 
 <div class="container">
