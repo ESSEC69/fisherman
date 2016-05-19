@@ -12,8 +12,11 @@
   <body>
 
     <!-- NavBar -->
+    <%= render "welcome/sign_up_modal" %>
+    <%= render "welcome/log_in_modal" %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+
     <!-- Page Body -->
     <%= yield %>
 
