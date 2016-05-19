@@ -1,1 +1,12 @@
-<%= spot.title%>
+<%= link_to spot_path(spot) do %>
+  <p><%= spot.title%></p>
+<%end%>
+  <p>
+  <% spot.rating.times do %>
+    <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
+  <%end%>
+  <% (5 - spot.rating).times do %>
+  <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
+  <%end%>
+  </p>
+
