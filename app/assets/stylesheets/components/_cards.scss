@@ -1,42 +1,42 @@
-// .card {
-//   // height: 175px;
+.card {
+  // height: 175px;
 
-// }
-// .card-user {
-//   position: absolute;
-//   right: 10px;
-//   top: 10px;
-// }
-// .card-category {
-//   position: absolute;
-//   top: 10px;
-//   left: 10px;
-//   font-size: 10px;
-//   text-transform: uppercase;
-// }
-// .card-description {
-//   position: absolute;
-//   bottom: 10px;
-//   left: 10px;
-// }
+}
+.card-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
 
-// .card-description p {
-//   font-size: 13px;
-//   }
-// .card-link {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   left:0;
-//   right:0;
-//   width: 100%;
-//   z-index:2;
-//   background: black;
-//   opacity: 0;
-// }
-// .card-link:hover{
-//   opacity: 0.1;
-// }
+.card-description p {
+  font-size: 13px;
+  }
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right:0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.card-link:hover{
+  opacity: 0.1;
+}
 
 /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
@@ -44,8 +44,7 @@
   position: relative;
   width: 100%;
   border : 0.5px solid $gray-lighter;
-  border-radius: 10px;
-  height: 300px;
+  border-radius: 4px;
 }
 
 .card-front-description {
@@ -70,104 +69,11 @@
 }
 .card .cover {
   overflow: hidden;
-  border-radius: 0 4px 4px 4px;
+  border-radius: 0 0 4px 4px;
   background-size: cover !important;
-  height: 150px;
+  height: 300px;
 }
-
-/*-----------------------*/
-
-
-.flip {
-  -webkit-perspective: 800;
-perspective: 800;
-
-    position: relative;
- text-align: center;
+.card-owner img {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 4px solid #FFFFFF;
 }
-.flip .card.flipped {
-  -webkit-transform: rotatey(-180deg);
-    transform: rotatey(-180deg);
-}
-
-.flip .card {
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
-    transform-style: preserve-3d;
-    transition: 0.5s;
-}
-.flip .card .face {
-  border : 0.5px solid $blue;
-  border-radius: 4px;
-  -webkit-backface-visibility: hidden ;
-    backface-visibility: hidden ;
-  z-index: 2;
-
-}
-.flip .card .front {
-  position: absolute;
-   width: 100%;
-  z-index: 1;
-
-}
-.flip .card .back {
-  height:100%;
-  -webkit-transform: rotatey(-180deg);
-    transform: rotatey(-180deg);
-}
-  .inner{
-    height:100%;
-    margin:0px !important;
-  }
-
-
-
-//-------------------------- Cards de search -------------------------//
-.card-search-spot {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transition: all .3s ease;
-  border-left: 2px solid $blue-dark;
-  margin-bottom: 5px;
-  .card-search-body {
-    flex: 1 0 auto;
-  }
-  .card-search-picture {
-    margin: 0 3px;
-    margin-right: 10px;
-    img {
-      border-radius: 3px;
-    }
-  }
-}
-
-.card-search-body {
-  h1 {
-    margin-top: 2px;
-    font-size: 18px;
-    line-height : 20px;
-    letter-spacing: 0.7px;
-  }
-  p {
-    font-size:14px;
-    color: $gray;
-  }
-}
-
-.card-search-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left:0;
-  right:0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-}
-.card-search-spot:hover {
-  border-left: 4px solid $blue;
-}
-
