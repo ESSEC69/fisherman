@@ -1,0 +1,69 @@
+<div class="modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Inscription</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Modal Content -->
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-inputs">
+                <%= f.input :first_name, input_html: { placeholder: "Prénom" } %>
+              </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-inputs">
+                <%= f.input :last_name, input_html: { placeholder: "Nom" }%>
+              </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-inputs">
+                <%= f.input :phone_number, input_html: { placeholder: "0623212627" } %>
+              </div>
+            </div>
+            <div class="col-md-12">
+               <div class="form-inputs">
+                <%= f.input :description, input_html: { placeholder: "Décrivez vous en quelques mots" } %>
+              </div>
+            </div>
+            <div class="col-md-12">
+               <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true %>
+              </div>
+            </div>
+            <div class="col-md-12">
+               <div class="form-inputs">
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              </div>
+            </div>
+            <div class="col-md-12">
+               <div class="form-inputs">
+                <%= f.input :password_confirmation, required: true %>
+              </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-inputs">
+                <%= f.button :submit, "Sign up", class: "btn btn-success" %>
+              </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-inputs">
+                <%= link_to "🚀  Sign up with Facebook", omniauth_authorize_path(resource_name, provider)%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!-- Modal Content -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
