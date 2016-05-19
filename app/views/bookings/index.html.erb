@@ -147,7 +147,7 @@
     <div class="col-md-1">
 
        <!-- you can review if your order has been confirmed and it has happened -->
-       <% if (location.status == 'Confirmée' && location.checkin.to_date < Date.new() ) %>
+       <% if (location.status == 'Confirmée' && Date.new(location.checkin.to_date) < Date.new() ) %>
        <p> <%= link_to "add a review", new_booking_review_path(location) %> </p>
        <%else%>
        <p>N/A</p>
