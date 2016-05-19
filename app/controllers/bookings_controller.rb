@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
     @pending_bookings = Booking.where("user_id = #{current_user.id} and status = 'En attente de confirmation'")
     @pending_locations = Booking.joins(:spot).where("spots.user_id = #{current_user.id} and status = 'En attente de confirmation'")
 
+
+
   end
   def new
     @booking = Booking.new()
