@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "cyrille@boisetsciagesguyanais.com"
+
+  default from: ENV['mail']
+
   layout 'mailer'
 end
