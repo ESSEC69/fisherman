@@ -1,14 +1,17 @@
 // Your footer style
 #footer {
-  background: #333333;
+  background: #171332;
   padding: 30px 0;
   color: #CCCCCC;
+  bottom: 0;
+
+
   p {
     margin-top: 17px;
     margin-left: 300px;
   }
   p:hover{
-    color: $blue-dark;
+    color: $green;
   }
   ul {
     margin-top: 10px;
@@ -22,5 +25,5 @@
 }
 
 .fa:hover {
-  color: $blue-dark;
+  color: $green;
 }
