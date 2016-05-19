@@ -37,5 +37,33 @@
 
     <%= javascript_include_tag 'application' %>
     <%= yield :after_js %>
+
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body text-center">
+            <%= image_tag "pamela.png" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
   </body>
+<script>
+
+$('body').mouseleave(function() {
+     $("#myModal").modal( 'toggle')
+
+})
+
+
+
+
+
+</script>
+
 </html>
