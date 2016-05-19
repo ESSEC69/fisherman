@@ -1,19 +1,18 @@
 
 <div class="flip">
   <div class="card">
-
     <div class="face front">
       <div class="well well-sm inner">
         <a class="card-link" href="#" ></a>
         <div class="card-front-description">
           <div class="card-title">
-            <h2>Au lac des terres Rouges</h2>
+            <h2><%= spot.title.capitalize%></h2>
           </div>
         </div>
         <div class="user text-center">
-          <%= image_tag("fishing-girl", class: "avatar-bordered")%>
+          <%= cl_image_tag(spot.user.photo, class: "avatar-bordered")%>
         </div>
-        <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
+        <div class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path spot.photo%>);">
       </div>
     </div>
     </div>
@@ -21,21 +20,23 @@
     <div class="face back">
        <div class="well well-sm inner">
          <a class="card-link" href="#" ></a>
-         <div class="card-front-description">
+         <div class="card-back-description">
            <div class="card-title">
-             <p>description du lac</p>
+            <p><strong>description:</strong></p>
+            <p><em><%= spot.description %></em></p>
+            <p><strong>Prix:</strong><em> afficher le prix en ruby </em></p>
+            <p><strong>Notes:</strong><em> afficher le rating en ruby</em>></p>
            </div>
          </div>
-         <div class="mini-cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
-         </div>
-          <ul class="list-inline">
+
+          <ul class="profile list-inline">
             <li>
-              <%= link_to show_user_path(current_user) do %>
+              <%= link_to show_user_path(spot.user) do %>
               <i class="fa fa-user"></i>
               <% end %>
             </li>
             <li>
-              <%= link_to bookings_path() do %>
+              <%= link_to bookings_path(spot.title) do %>
               <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
               <% end %>
             </li>

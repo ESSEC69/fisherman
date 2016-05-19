@@ -18,7 +18,9 @@
           <% @spots_results.each do |spot|%>
             <div class="col-xs-12 col-sm-6">
               <%=spot.title%>
-              <%=spot.description%>
+              <%=spot.description%> <br/>
+              <%= link_to "show", spot_path(spot) %>
+
             </div>
            <%end%>
         </div>

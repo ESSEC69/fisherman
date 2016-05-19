@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reviews, dependent: :destroy
+  after_create :send_welcom_email
 
   mount_uploader :photo, PhotoUploader
 
@@ -21,6 +22,12 @@ class User < ActiveRecord::Base
         user.token = auth.credentials.token
         user.token_expiry = Time.at(auth.credentials.expires_at)
       end
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcom(self).deliver_now
   end
 
 end
