@@ -7,10 +7,10 @@
     <p><em>Ce spot de pêche n'a pas encre été noté<em></p>
   <%else%>
     <p>
-    <% @spot.rating.times do %>
+    <% @spot.average_rating.times do %>
       <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
     <%end%>
-    <% (5 - @spot.rating).times do %>
+    <% (5 - @spot.average_rating).times do %>
     <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
     <%end%>
     </p>

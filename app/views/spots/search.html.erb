@@ -63,11 +63,14 @@
       <div class="row">
         <div class="col-xs-12">
           <div id="search-results">
-            <% @spots_results.each do |spot|%>
+            <% @spots_final_results.each do |spot|%>
               <%= render "spots/card_search_spot", spot: spot %>
             <%end%>
-            <%= paginate @spots_results %>
           </div>
+          <div id="paginator">
+            <%= paginate @spots_final_results %>
+          </div>
+
         </div>
       </div>
     </div>

@@ -1,3 +1,11 @@
+module Kaminari
+  class PaginatableArray < Array
+    def total_count
+      @_total_count || @_original_array.count(:all)
+    end
+  end
+end
+
 class Spot < ActiveRecord::Base
   # photo uploads
   mount_uploader :photo, PhotoUploader
@@ -16,7 +24,7 @@ class Spot < ActiveRecord::Base
   #private
   #
   # pagination
-  paginates_per 4
+  max_paginates_per 4
 
   def rating
     self.reviews.average(:rating).to_i
