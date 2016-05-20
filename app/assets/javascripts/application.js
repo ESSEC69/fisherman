@@ -12,22 +12,16 @@
 //jQuery is required to run this code
 
 
-//JAVA NAVBAR
+//JQUERY NAVBAR
 // $(document).on('scroll', function (e) {
 //     $('.navbar-wagon').css('opacity', ($(document).scrollTop() / 300));
 // });
 
-window.addEventListener("scroll", function() {
-    if (window.scrollY > 1) {
-        $('.navbar-wagon').fadeOut();
-    }
-    else {
-        $('.navbar-wagon').fadeIn();
-    }
-},false);
 
 
-// JAVA VIDEO
+
+
+// JQUERY VIDEO
 $( document ).ready(function() {
 
     scaleVideoContainer();
@@ -85,9 +79,6 @@ function scaleBannerVideoSize(element){
 
             $(this).width(videoWidth).height(videoHeight);
         }
-
-        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
-
     });
 }
 

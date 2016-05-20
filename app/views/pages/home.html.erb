@@ -14,3 +14,14 @@
       </div>
   </div>
 </div>
+
+<script>
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 10) {
+        $('.navbar-wagon').fadeOut().addClass("fixed");
+    }
+    else {
+        $('.navbar-wagon').fadeIn().addClass("fixed");
+    }
+},false);
+</script>
