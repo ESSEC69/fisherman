@@ -37,6 +37,7 @@ gem 'carrierwave'
 
 # Pagination
 gem "will_paginate"
+gem 'kaminari'
 
 source 'https://rails-assets.org' do
 

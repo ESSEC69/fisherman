@@ -25,6 +25,10 @@ class SpotsController < ApplicationController
       end
     end
 
+    # pagination
+    @spots_results = @spots_results.sort_by{|spot| -spot.rating}
+    Kaminari.paginate_array(@spots_results).page(params[:page])
+
     @markers = Gmaps4rails.build_markers(@spots_results) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude

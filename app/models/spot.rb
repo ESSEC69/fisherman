@@ -15,6 +15,8 @@ class Spot < ActiveRecord::Base
   has_many :reviews, through: :bookings
   #private
   #
+  # pagination
+  paginates_per 4
 
   def rating
     self.reviews.average(:rating).to_i
