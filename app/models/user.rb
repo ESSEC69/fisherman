@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reviews, dependent: :destroy
   after_create :send_welcome_email
+  has_many :messages, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 
