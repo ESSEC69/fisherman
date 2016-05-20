@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
   </head>
-  <body>
+  <body class="<%= controller_name %>-<%= action_name %>">
 
     <!-- NavBar -->
     <%= render "welcome/sign_up_modal" %>
@@ -18,7 +18,9 @@
     <%= render 'shared/flashes' %>
 
     <!-- Page Body -->
-    <%= yield %>
+    <div class="container-yield">
+      <%= yield %>
+    </div>
 
     <!-- Footer -->
     <%= render 'shared/footer' %>
