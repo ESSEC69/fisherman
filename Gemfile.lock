@@ -221,6 +221,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
+    will_paginate (3.1.0)
 
 PLATFORMS
   ruby
@@ -258,6 +259,7 @@ DEPENDENCIES
   spring
   sweet-alert-confirm
   uglifier
+  will_paginate
 
 BUNDLED WITH
    1.11.2
