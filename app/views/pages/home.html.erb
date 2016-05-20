@@ -18,13 +18,14 @@
   </div>
 </div>
 
+<!-- cache la nav bar lorque l'utilisteur scroll down (indice 10) -->
 <script>
 window.addEventListener("scroll", function() {
     if (window.scrollY > 10) {
-        $('.navbar-wagon').fadeOut().addClass("fixed");
+        $('.navbar-wagon').fadeOut();
     }
     else {
-        $('.navbar-wagon').fadeIn().addClass("fixed");
+        $('.navbar-wagon').fadeIn();
     }
 },false);
 </script>

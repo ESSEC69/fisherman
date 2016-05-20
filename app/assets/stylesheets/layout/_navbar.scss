@@ -64,12 +64,13 @@
   background-color: $green;
   color: white;
   font-size: 14px;
-  border: 2px solid $green;
+  // border: 2px solid $green;
 }
 .navbar-wagon-button:hover {
   color: white;
   background: $green;
-  border-color: #008000;
+  border: 1px solid $green;
+  // border-color: #008000;
 }
 
 
