@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Fisheo messenger</h1>
+    <h2 class="text-center"><em> Le coin des pêcheurs</em></h2>
+  </div>
+  <div class="row">
+    <div class="chat-form">
+      <%= render "messages/form" %>
+    </div>
+  </div>
+  <div class="wrapper-chat">
+    <div id="messages" class="row">
+
+      <div class="col-md-12">
+        <% @messages.each do |message| %>
+          <p><strong><em>Posté par: </em></strong> <%= message.user.first_name %> </p>
+          <p><strong><em>Message: </em></strong> <%= message.content %> </p>
+          <hr>
+         <% end %>
+      </div>
+      <!-- <div class="col-md-2">
+        <% @messages.each do |message| %>
+          <p><em>posté par: </em> <%= message.user.first_name %> </p>
+        <% end %>
+      </div> -->
+    </div>
+  </div>
+</div>

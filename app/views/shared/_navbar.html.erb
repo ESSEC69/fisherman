@@ -23,7 +23,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo.present? %>
-            <%= image_tag current_user.photo ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag current_user.photo ,:width=>35, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
             <%= image_tag current_user.picture ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>

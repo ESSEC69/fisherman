@@ -1,0 +1,15 @@
+// Here you will write *javascript* that would be executed by the browser
+
+<% if @message.errors.any? %>
+  // Render new review form with errors
+  $('#new_message').html("<%= j render 'messages/form', message: @message %>");
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_message = $("<%= j render 'messages/message', message: @message %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#messages').prepend(new_message);
+  // Show the new review with an animation!
+  new_message.slideDown();
+  // Remove the text from the content textarea.
+  $('#message_content').val('');
+<% end %>

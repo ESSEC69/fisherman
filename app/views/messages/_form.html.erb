@@ -1,0 +1,12 @@
+
+<%= simple_form_for(@message, remote:true, method: :post) do |f| %>
+  <%= f.error_notification %>
+
+    <div class="col-xs-10">
+    <%= f.input :content %>
+    </div>
+    <div class="col-xs-2 btn-form">
+    <%= f.button :submit %>
+    </div>
+
+<% end %>
