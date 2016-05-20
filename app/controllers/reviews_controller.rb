@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
       if @review.ownership
         redirect_to show_user_path(@review.booking.user_id)
       else
-        redirect_to spot_path(@review.booking.spot_id)
+      redirect_to spot_path(@review.booking.spot_id)
       end
     else
       render :new

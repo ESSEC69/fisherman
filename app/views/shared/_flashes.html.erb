@@ -10,3 +10,15 @@
     <%= alert %>
   </div>
 <% end %>
+
+<!-- cache les alertes bar lorque l'utilisteur scroll down (indice 1) -->
+<script>
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 1) {
+        $('.alert').hide();
+    }
+    // else {
+    //     $('.navbar-wagon').fadeIn();
+    // }
+},false);
+</script>

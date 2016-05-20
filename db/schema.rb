@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160520131833) do
 
   # These are extensions that must be enabled in order to support this database
@@ -30,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160520131833) do
 
   add_index "bookings", ["spot_id"], name: "index_bookings_on_spot_id", using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
@@ -93,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160520131833) do
 
   add_foreign_key "bookings", "spots"
   add_foreign_key "bookings", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "users"
   add_foreign_key "spots", "users"

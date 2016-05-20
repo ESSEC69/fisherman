@@ -9,22 +9,15 @@
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
+    <!-- Accès au chat -->
+    <%= link_to "<i class='fa fa-comments'></i>".html_safe, messages_path, class: "badge-container"%>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo.present? %>
-            <%= image_tag current_user.photo ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag current_user.photo ,:width=>35, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
-            <%= image_tag current_user.picture ,:width=>135, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag current_user.picture ,:width=>35, :height=>35, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "img-round", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -32,11 +25,6 @@
                 <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
               <% end %>
             </li>
-            <!-- <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
-              <% end %>
-            </li> -->
             <li>
               <%= link_to bookings_path() do %>
                 <i class="fa fa-book"></i> <%= t ".tableaudebord", default: "Tableau de Bord" %>
@@ -68,7 +56,6 @@
     </div>
 
     <%end%>
-    <!-- Button (call-to-action) -->
 
 
   <!-- Dropdown list appearing on mobile only -->
