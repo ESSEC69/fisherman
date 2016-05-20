@@ -27,6 +27,9 @@
   <div class="row">
   <div class="commentaire">
     <div class="col-md-2">
+      <p> <i class="fa fa-user" aria-hidden="true"></i></p>
+    </div>
+    <div class="col-md-2">
       <p> <strong>Pêcheur</strong>  </p>
     </div>
     <div class="col-md-2">
@@ -36,10 +39,11 @@
       <p> <strong>Commentaire</strong>  </p>
     </div>
   </div>
+  </div>
   <% @reviews.each do |review| %>
   <div class="commentaire">
   <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-2">
       <p> <%= review.booking.user.picture %> </p>
     </div>
     <div class="col-md-2">
@@ -51,10 +55,21 @@
     <div class="col-md-4">
       <p> <%= review.content %> </p>
     </div>
+    <div class="col-md-2">
+      <p>
+        <% review.rating.times do %>
+          <i class="fa fa-star" aria-hidden"=true" style="color: #FBE70C;"></i>
+        <%end%>
+        <% (5 - review.rating).times do %>
+          <i class="fa fa-star" aria-hidden"=true" style="color: $grey;"></i>
+        <%end%>
+      </p>
+    </div>
+
   </div>
   </div>
 
-  </div>
+
   <%end%>
 </div>
 </div>
