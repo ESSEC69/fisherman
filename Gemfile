@@ -35,6 +35,10 @@ gem 'sweet-alert-confirm'
 gem 'cloudinary'
 gem 'carrierwave'
 
+# Pagination
+gem "will_paginate"
+gem 'kaminari'
+
 source 'https://rails-assets.org' do
 
   gem "rails-assets-underscore"
