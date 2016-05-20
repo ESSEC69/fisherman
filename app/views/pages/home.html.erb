@@ -5,11 +5,15 @@
 <div class="flip-card-container">
   <div class="container padded text-center">
     <div class="row">
+    <%if @spots %>
       <% @spots.each do |spot|%>
         <div class="col-xs-12 col-sm-4">
           <%= render "shared/card_spot", spot: spot %>
         </div>
       <%end%>
-      </div>
+    <%else%>
+      <p> Ajouter un Spot sans attendre !</p>
+    <%end%>
+    </div>
   </div>
 </div>
