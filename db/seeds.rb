@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Spot.create(title:"l'etang du pecheur")
+
 
 
 
