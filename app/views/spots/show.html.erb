@@ -38,7 +38,7 @@
 <div class="commentaire-wrapper">
   <h4 class="text-center ">Commentaires</h4>
   <div class="row">
-  <div class="commentaire">
+
     <div class="col-md-2">
       <p> <i class="fa fa-user" aria-hidden="true"></i></p>
     </div>
@@ -51,14 +51,17 @@
     <div class="col-md-4">
       <p> <strong>Commentaire</strong>  </p>
     </div>
-  </div>
+    <div class="col-md-2">
+      <p> <strong>Note</strong>  </p>
+    </div>
+
   </div>
   <% @reviews.each do |review| %>
   <div class="commentaire">
   <div class="row">
-    <div class="col-md-2">
-      <p> <%= review.booking.user.picture %> </p>
-    </div>
+     <div class="col-md-1">
+        <%= cl_image_tag review.booking.spot.user.photo, crop: :fit, width: 100, height: 100, class: "img-responsive"%>
+      </div>
     <div class="col-md-2">
       <p> <%= review.booking.user.first_name %> </p>
     </div>
