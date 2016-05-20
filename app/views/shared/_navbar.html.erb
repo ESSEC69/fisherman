@@ -9,7 +9,7 @@
 
 
     <!-- Accès au chat -->
-    <%= link_to "<i class='fa fa-comments'></i>".html_safe, "#", class: "badge-container"%>
+    <%= link_to "<i class='fa fa-comments'></i>".html_safe, messages_path, class: "badge-container"%>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
