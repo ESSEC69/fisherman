@@ -10,7 +10,9 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
     <!-- Accès au chat -->
-    <%= link_to "<i class='fa fa-comments'></i>".html_safe, messages_path, class: "badge-container"%>
+    <%= link_to messages_path do %>
+      <i class='fa fa-comments badge-container'></i>
+    <% end %>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
